@@ -1,0 +1,26 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "draftt",
+  "description": "Claude skills for product and UX teams, from idea to market, with every claim tagged as evidence or assumption.",
+  "version": "0.1.0",
+  "owner": {
+    "name": "Tom Drugan",
+    "url": "https://draftt.com"
+  },
+  "plugins": [
+    {
+      "name": "draftt-core",
+      "source": "./plugins/draftt-core",
+      "description": "Team config, strategic critique, guided flows, and the critic agent. Every other Draftt plugin builds on it.",
+      "category": "productivity",
+      "tags": ["product-management", "ux", "critique", "flows"]
+    },
+    {
+      "name": "draftt-product",
+      "source": "./plugins/draftt-product",
+      "description": "Define the product: problem framing and PRDs, with goals, non-goals, risks, and open questions.",
+      "category": "productivity",
+      "tags": ["product-management", "prd", "problem-framing"]
+    }
+  ]
+}

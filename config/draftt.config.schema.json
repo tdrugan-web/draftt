@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://draftt.com/schema/config-1.json",
+  "title": "Draftt team config frontmatter",
+  "description": "Frontmatter of draftt.config.md, spec version 1. See docs/CONFIG-SPEC.md. Cross-file checks (artifact types, template files exist) are done by scripts/validate_config.py.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["draftt"],
+  "properties": {
+    "draftt": { "const": 1 },
+    "team": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string", "maxLength": 80 },
+        "product": { "type": "string", "maxLength": 120 },
+        "size": { "enum": ["solo", "small", "medium", "large"] },
+        "industry": { "type": "string", "maxLength": 60 }
+      }
+    },
+    "terminology": {
+      "type": "object",
+      "propertyNames": { "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+      "additionalProperties": { "type": "string", "minLength": 1, "maxLength": 40 }
+    },
+    "tools": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tracker": { "enum": ["jira", "linear", "asana", "github", "azure-devops", "shortcut", "none"] },
+        "docs": { "enum": ["notion", "confluence", "google-docs", "coda", "sharepoint", "markdown", "none"] },
+        "design": { "enum": ["figma", "penpot", "sketch", "none"] },
+        "chat": { "enum": ["slack", "teams", "none"] },
+        "research": { "enum": ["dovetail", "condens", "notion", "none"] }
+      }
+    },
+    "templates": {
+      "type": "object",
+      "propertyNames": { "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+      "additionalProperties": { "type": "string", "minLength": 1, "maxLength": 200 }
+    },
+    "rituals": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "cadence": { "enum": ["scrum", "kanban", "shape-up", "custom"] },
+        "sprint-length": { "type": "integer", "minimum": 1, "maximum": 8 },
+        "discovery": { "enum": ["continuous", "phase", "ad-hoc"] },
+        "design-review": { "type": "string", "maxLength": 120 },
+        "estimation": { "enum": ["points", "t-shirt", "hours", "none"] }
+      }
+    },
+    "standards": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "accessibility": { "enum": ["wcag-2.2-a", "wcag-2.2-aa", "wcag-2.2-aaa"] },
+        "evidence": { "enum": ["standard", "strict"] },
+        "prioritization": { "enum": ["rice", "ice", "moscow", "kano", "cost-of-delay"] },
+        "metrics": { "enum": ["north-star", "okr", "heart"] }
+      }
+    },
+    "voice": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tone": { "enum": ["plain", "formal", "friendly"] },
+        "reading-level": { "enum": ["general", "expert"] },
+        "banned": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1, "maxLength": 40 }
+        }
+      }
+    }
+  }
+}

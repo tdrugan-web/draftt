@@ -1,0 +1,15 @@
+{
+  "name": "draftt-product",
+  "displayName": "Draftt Product",
+  "version": "0.1.0",
+  "description": "Define the product: problem framing and PRDs, with goals, non-goals, risks, and open questions.",
+  "author": {
+    "name": "Tom Drugan",
+    "url": "https://draftt.com"
+  },
+  "homepage": "https://draftt.com",
+  "repository": "https://github.com/tdrugan-web/draftt",
+  "license": "MIT",
+  "keywords": ["product-management", "prd", "problem-framing", "draftt"],
+  "dependencies": ["draftt-core"]
+}

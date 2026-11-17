@@ -1,0 +1,14 @@
+{
+  "name": "draftt-core",
+  "displayName": "Draftt Core",
+  "version": "0.1.0",
+  "description": "Team config, strategic critique, guided flows, and the critic agent. Every other Draftt plugin builds on it.",
+  "author": {
+    "name": "Tom Drugan",
+    "url": "https://draftt.com"
+  },
+  "homepage": "https://draftt.com",
+  "repository": "https://github.com/tdrugan-web/draftt",
+  "license": "MIT",
+  "keywords": ["product-management", "ux", "critique", "flows", "draftt"]
+}

@@ -1,0 +1,165 @@
+# Draft. Ships in Phase 5, once every skill below exists.
+id: idea-to-market
+spec: 1
+version: 1
+title: Idea to market
+summary: Take a product idea from a framed problem through research, definition, design, and validation to a go/no-go call and a launch plan.
+audience: [trio, pm, ux]
+estimate: 2-4 hours across sessions
+
+entry:
+  - id: idea
+    label: What's the idea?
+    type: long-text
+    required: true
+    help: A sentence or two is enough. Say who it's for if you know.
+  - id: notes
+    label: Anything you already have?
+    type: files
+    accept: [doc, screenshot]
+    help: Notes, a doc, or screenshots. Optional.
+  - id: transcripts
+    label: Interview transcripts
+    type: files
+    accept: [transcript]
+    help: Real interviews make every later step stronger. Optional.
+
+steps:
+  - id: frame
+    skill: problem-framer
+    title: Frame the problem
+    uses: [entry.idea, entry.notes]
+    produces: problem-frame
+    checkpoint: approve
+
+  - id: landscape
+    title: Map the landscape
+    checkpoint: review
+    parallel:
+      - id: competitors
+        skill: competitive-analysis
+        title: Review competitors
+        uses: [steps.frame]
+        produces: competitive-analysis
+      - id: sizing
+        skill: market-sizer
+        title: Size the market
+        uses: [steps.frame]
+        produces: market-sizing
+
+  - id: research-plan
+    skill: research-planner
+    title: Plan the research
+    uses: [steps.frame, steps.landscape]
+    produces: research-plan
+    checkpoint: review
+
+  - id: evidence
+    title: Bring in user evidence
+    branch:
+      - id: real
+        label: I have interview transcripts
+        when: has(entry.transcripts)
+        steps:
+          - id: synthesize
+            skill: interview-synthesizer
+            title: Synthesize interviews
+            uses: [entry.transcripts, steps.research-plan]
+            produces: research-synthesis
+            checkpoint: approve
+      - id: synthetic
+        label: No research yet, give me a labeled gut check
+        steps:
+          - id: synthetic-check
+            skill: synthetic-user
+            title: Run a synthetic gut check
+            uses: [steps.frame, steps.research-plan]
+            produces: synthetic-feedback
+            checkpoint: review
+
+  - id: personas
+    skill: persona-builder
+    title: Build personas
+    uses: [steps.evidence, steps.frame]
+    produces: persona
+    checkpoint: review
+
+  - id: positioning
+    skill: positioning-builder
+    title: Position the product
+    uses: [steps.frame, steps.landscape, steps.personas]
+    produces: positioning
+    checkpoint: approve
+
+  - id: prd
+    skill: prd-writer
+    title: Write the PRD
+    uses: [steps.frame, steps.personas, steps.positioning]
+    produces: prd
+    checkpoint: approve
+
+  - id: metrics
+    skill: metrics-definer
+    title: Define success metrics
+    uses: [steps.prd]
+    produces: metrics-plan
+    checkpoint: review
+
+  - id: ia
+    skill: information-architect
+    title: Structure the product
+    uses: [steps.prd, steps.personas]
+    produces: information-architecture
+    checkpoint: review
+
+  - id: flows
+    skill: ux-flow-designer
+    title: Design the key flows
+    uses: [steps.ia, steps.prd, steps.personas]
+    produces: ux-flow
+    checkpoint: review
+
+  - id: test-plan
+    skill: usability-test-planner
+    title: Plan usability testing
+    uses: [steps.flows, steps.personas]
+    produces: usability-test-plan
+    checkpoint: review
+
+  - id: pricing
+    skill: pricing-strategist
+    title: Shape pricing
+    uses: [steps.positioning, steps.landscape, steps.personas]
+    produces: pricing-strategy
+    checkpoint: review
+
+  - id: model
+    skill: business-model-designer
+    title: Model the business
+    uses: [steps.pricing, steps.landscape]
+    produces: business-model
+    checkpoint: review
+
+  - id: decision
+    skill: go-no-go-reviewer
+    title: Make the go/no-go call
+    uses: [steps.frame, steps.evidence, steps.landscape, steps.model, steps.metrics]
+    produces: go-no-go-memo
+    checkpoint: approve
+
+  - id: gtm
+    skill: gtm-planner
+    title: Plan go-to-market
+    uses: [steps.decision, steps.positioning, steps.pricing, steps.personas]
+    produces: gtm-plan
+    checkpoint: review
+    instructions: If the memo says no-go or not yet, plan the smallest next test instead of a launch.
+
+  - id: launch
+    skill: launch-planner
+    title: Plan the launch
+    uses: [steps.gtm, steps.prd, steps.metrics]
+    produces: launch-checklist
+    checkpoint: review
+
+outputs: [steps.prd, steps.flows, steps.decision, steps.gtm, steps.launch]

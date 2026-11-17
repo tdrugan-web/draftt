@@ -1,0 +1,23 @@
+# Internal planning docs (business model, stack, trial caps). Not for the public repo.
+# Moves to the private draftt-web repo once it exists.
+planning/
+
+# OS and editor noise
+.DS_Store
+.vscode/
+.idea/
+
+# Local env and secrets
+.env
+.env.*
+!.env.example
+
+# Dependencies and build output
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+dist/
+
+# claude plugin eval results
+plugins/*/evals/results/

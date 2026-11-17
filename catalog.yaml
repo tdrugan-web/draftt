@@ -1,0 +1,66 @@
+# Draftt skill catalog. The single source of truth for which skills exist.
+# The skill linter and flow validator check every skill name against this file.
+# status: planned | draft | shipped
+# A skill folder must exist for draft and shipped skills, and must not exist for planned ones.
+
+plugins:
+  draftt-core: Shared skills, flow skills, agents, and hooks every Draftt plugin relies on
+  draftt-product: Define, Deliver and Launch, and Lead skills
+  draftt-ux: Discover research, Design, and Validate skills
+  draftt-market: Market stage skills, from competition to go-to-market
+
+skills:
+  # Core
+  - { name: draftt-context, plugin: draftt-core, stage: core, phase: 1, status: draft }
+  - { name: strategic-critique, plugin: draftt-core, stage: core, phase: 1, status: draft }
+  - { name: stakeholder-update, plugin: draftt-core, stage: core, phase: 6, status: planned }
+  - { name: meeting-to-actions, plugin: draftt-core, stage: core, phase: 6, status: planned }
+  - { name: idea-to-prd, plugin: draftt-core, stage: core, phase: 1, status: draft, flow: true }
+  - { name: idea-to-market, plugin: draftt-core, stage: core, phase: 5, status: planned, flow: true }
+
+  # Discover
+  - { name: research-planner, plugin: draftt-ux, stage: discover, phase: 3, status: planned }
+  - { name: interview-synthesizer, plugin: draftt-ux, stage: discover, phase: 3, status: planned }
+  - { name: jobs-to-be-done, plugin: draftt-ux, stage: discover, phase: 3, status: planned }
+  - { name: persona-builder, plugin: draftt-ux, stage: discover, phase: 3, status: planned }
+  - { name: journey-mapper, plugin: draftt-ux, stage: discover, phase: 3, status: planned }
+
+  # Define
+  - { name: problem-framer, plugin: draftt-product, stage: define, phase: 1, status: draft }
+  - { name: prd-writer, plugin: draftt-product, stage: define, phase: 1, status: draft }
+  - { name: user-story-writer, plugin: draftt-product, stage: define, phase: 3, status: planned }
+  - { name: prioritization, plugin: draftt-product, stage: define, phase: 3, status: planned }
+  - { name: metrics-definer, plugin: draftt-product, stage: define, phase: 3, status: planned }
+
+  # Design
+  - { name: information-architect, plugin: draftt-ux, stage: design, phase: 4, status: planned }
+  - { name: ux-flow-designer, plugin: draftt-ux, stage: design, phase: 4, status: planned }
+  - { name: content-designer, plugin: draftt-ux, stage: design, phase: 4, status: planned }
+  - { name: design-system-steward, plugin: draftt-ux, stage: design, phase: 4, status: planned }
+  - { name: design-critique, plugin: draftt-ux, stage: design, phase: 4, status: planned }
+
+  # Validate
+  - { name: usability-test-planner, plugin: draftt-ux, stage: validate, phase: 4, status: planned }
+  - { name: heuristic-evaluator, plugin: draftt-ux, stage: validate, phase: 4, status: planned }
+  - { name: experiment-designer, plugin: draftt-product, stage: validate, phase: 6, status: planned }
+  - { name: synthetic-user, plugin: draftt-ux, stage: validate, phase: 4, status: planned }
+
+  # Market
+  - { name: competitive-analysis, plugin: draftt-market, stage: market, phase: 5, status: planned }
+  - { name: market-sizer, plugin: draftt-market, stage: market, phase: 5, status: planned }
+  - { name: positioning-builder, plugin: draftt-market, stage: market, phase: 5, status: planned }
+  - { name: pricing-strategist, plugin: draftt-market, stage: market, phase: 5, status: planned }
+  - { name: business-model-designer, plugin: draftt-market, stage: market, phase: 5, status: planned }
+  - { name: go-no-go-reviewer, plugin: draftt-market, stage: market, phase: 5, status: planned }
+  - { name: gtm-planner, plugin: draftt-market, stage: market, phase: 5, status: planned }
+
+  # Deliver and Launch
+  - { name: spec-handoff, plugin: draftt-product, stage: deliver, phase: 6, status: planned }
+  - { name: release-notes-writer, plugin: draftt-product, stage: deliver, phase: 6, status: planned }
+  - { name: launch-planner, plugin: draftt-product, stage: deliver, phase: 6, status: planned }
+  - { name: retro-facilitator, plugin: draftt-product, stage: deliver, phase: 6, status: planned }
+
+  # Lead
+  - { name: roadmap-builder, plugin: draftt-product, stage: lead, phase: 6, status: planned }
+  - { name: okr-writer, plugin: draftt-product, stage: lead, phase: 6, status: planned }
+  - { name: team-rituals, plugin: draftt-product, stage: lead, phase: 6, status: planned }

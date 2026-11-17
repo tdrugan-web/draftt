@@ -1,0 +1,109 @@
+/* Draftt components. Every value comes from a token. */
+body { margin: 0; font-family: var(--font-sans); font-size: 16px; line-height: 24px; background: var(--paper); color: var(--ink); }
+.dt-sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.dt-row { display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; padding: var(--space-6); }
+.dt-stack { display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-6); max-width: 560px; }
+.dt-focus, .dt-btn:focus-visible, .dt-input:focus-visible, .dt-card-link:focus-visible {
+  outline: 2px solid var(--action); outline-offset: 2px;
+}
+
+/* Button */
+.dt-btn { font: inherit; font-size: 15px; font-weight: 500; line-height: 20px; display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
+  min-height: 36px; padding: var(--space-2) var(--space-4); border-radius: var(--radius-md); border: 1px solid var(--line-strong);
+  background: var(--raised); color: var(--ink); cursor: pointer; text-decoration: none; }
+.dt-btn:hover { background: var(--sunk); }
+.dt-btn-lg { min-height: 44px; padding: var(--space-2) var(--space-6); font-size: 16px; }
+.dt-btn-sm { min-height: 28px; padding: var(--space-1) var(--space-2); font-size: 14px; }
+.dt-btn-primary { background: var(--action); border-color: var(--action); color: var(--on-action); }
+.dt-btn-primary:hover { background: var(--ink); border-color: var(--ink); }
+.dt-btn-quiet { background: transparent; border-color: transparent; color: var(--action); }
+.dt-btn-quiet:hover { background: var(--sunk); }
+.dt-btn-danger { background: var(--raised); border-color: var(--error); color: var(--error); }
+.dt-btn-danger:hover { background: var(--error); color: var(--on-action); }
+.dt-btn:disabled { cursor: not-allowed; background: var(--sunk); border-color: var(--line); color: var(--ink-muted); }
+
+/* TextField */
+.dt-field { display: flex; flex-direction: column; gap: var(--space-1); }
+.dt-field-label { font-size: 14px; line-height: 20px; font-weight: 600; color: var(--ink); }
+.dt-field-optional { font-weight: 400; color: var(--ink-muted); }
+.dt-field-hint { margin: 0; font-size: 14px; line-height: 20px; color: var(--ink-muted); }
+.dt-input { font: inherit; font-size: 16px; line-height: 24px; color: var(--ink); background: var(--raised);
+  border: 1px solid var(--line-strong); border-radius: var(--radius-sm); padding: var(--space-2) var(--space-2); min-height: 40px; box-sizing: border-box; width: 100%; }
+.dt-input::placeholder { color: var(--ink-muted); }
+.dt-input-multi { resize: vertical; }
+.dt-input-invalid { border-color: var(--error); border-width: 2px; padding: 7px; }
+.dt-field-error { margin: 0; display: flex; gap: var(--space-2); align-items: center; font-size: 14px; line-height: 20px; color: var(--error); font-weight: 500; }
+.dt-field-error-icon { display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px; border-radius: var(--radius-full);
+  background: var(--error); color: var(--on-action); font-size: 12px; font-weight: 700; line-height: 1; }
+
+/* EvidenceTag */
+.dt-tag { display: inline-flex; align-items: baseline; gap: var(--space-1); font-family: var(--font-mono); font-size: 13px; line-height: 20px; white-space: nowrap; }
+.dt-tag-letter { font-weight: 600; }
+.dt-tag-word { font-family: var(--font-sans); font-size: 13px; font-weight: 500; }
+.dt-tag-source { font-family: var(--font-sans); font-size: 13px; color: var(--ink-muted); }
+.dt-tag-evidence { color: var(--evidence); }
+.dt-tag-assumption { color: var(--assumption); }
+.dt-tag-synthetic { color: var(--synthetic); }
+
+/* ArtifactLabel */
+.dt-label { display: inline-block; font-size: 13px; line-height: 16px; font-weight: 500; padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm); border: 1px solid var(--line-strong); color: var(--ink-muted); background: var(--raised); }
+.dt-label-synthetic { border-color: var(--synthetic); color: var(--synthetic); }
+.dt-label-assumption-heavy { border-color: var(--assumption); color: var(--assumption); }
+.dt-label-evidence-backed { border-color: var(--evidence); color: var(--evidence); }
+.dt-label-needs-validation { border-color: var(--assumption); color: var(--assumption); border-style: dashed; }
+
+/* Highlight */
+.dt-hl { background: var(--highlight); color: var(--ink); padding: 0 2px; border-radius: var(--radius-sm); box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+
+/* ArtifactCard */
+.dt-card { background: var(--raised); border: 1px solid var(--line-strong); border-radius: var(--radius-md); padding: var(--space-6);
+  display: flex; flex-direction: column; gap: var(--space-2); max-width: 520px; box-sizing: border-box; }
+.dt-card-head { display: flex; justify-content: space-between; align-items: center; gap: var(--space-2); }
+.dt-card-type { font-family: var(--font-mono); font-size: 13px; line-height: 20px; color: var(--ink-muted); }
+.dt-card-status { font-size: 13px; line-height: 16px; font-weight: 500; padding: var(--space-1) var(--space-2); border-radius: var(--radius-sm); }
+.dt-card-status-draft { background: var(--sunk); color: var(--ink); }
+.dt-card-status-approved { background: var(--action); color: var(--on-action); }
+.dt-card-title { margin: 0; font-family: var(--font-display); font-size: 24px; line-height: 32px; font-weight: 500; letter-spacing: -0.01em; }
+.dt-card-link { color: var(--ink); text-decoration: none; }
+.dt-card-link:hover { text-decoration: underline; text-decoration-color: var(--action); text-underline-offset: 3px; }
+.dt-card-body { font-size: 14px; line-height: 20px; color: var(--ink-muted); }
+.dt-card-body p { margin: 0; }
+.dt-card-labels { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.dt-card-foot { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4); padding-top: var(--space-2); border-top: 1px solid var(--line); font-size: 13px; line-height: 20px; color: var(--ink-muted); }
+.dt-card-skill { font-family: var(--font-mono); font-size: 13px; margin-left: auto; }
+.dt-conf { display: inline-flex; align-items: center; gap: var(--space-2); color: var(--ink); font-weight: 500; }
+.dt-conf-bars { display: inline-flex; gap: 2px; align-items: flex-end; }
+.dt-conf-bars i { display: block; width: 4px; background: var(--line); border-radius: 1px; }
+.dt-conf-bars i:nth-child(1) { height: 6px; } .dt-conf-bars i:nth-child(2) { height: 10px; } .dt-conf-bars i:nth-child(3) { height: 14px; }
+.dt-conf-low .dt-conf-bars i:nth-child(1),
+.dt-conf-medium .dt-conf-bars i:nth-child(-n+2),
+.dt-conf-high .dt-conf-bars i { background: var(--ink); }
+
+/* FlowRail */
+.dt-rail { font-size: 14px; line-height: 20px; }
+.dt-rail-title { margin: 0 0 var(--space-4); font-family: var(--font-display); font-size: 20px; line-height: 28px; font-weight: 500; }
+.dt-rail-list { list-style: none; margin: 0; padding: 0; }
+.dt-rail-step { position: relative; display: flex; gap: var(--space-4); padding-bottom: var(--space-4); }
+.dt-rail-step:not(:last-child)::before { content: ""; position: absolute; left: 11px; top: 28px; bottom: 4px; width: 2px; background: var(--line); }
+.dt-rail-done:not(:last-child)::before { background: var(--ink); }
+.dt-rail-dot { flex: none; width: 24px; height: 24px; box-sizing: border-box; border-radius: var(--radius-full); display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono); font-size: 12px; font-weight: 600; border: 2px solid var(--line-strong); color: var(--ink-muted); background: var(--paper); }
+.dt-rail-done .dt-rail-dot { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.dt-rail-current .dt-rail-dot { border-color: var(--action); color: var(--action); background: var(--raised); }
+.dt-rail-blocked .dt-rail-dot { border-color: var(--action); color: var(--action); border-style: dashed; }
+.dt-rail-skipped .dt-rail-dot { border-style: dashed; }
+.dt-rail-text { display: flex; flex-direction: column; }
+.dt-rail-name { color: var(--ink); font-weight: 500; }
+.dt-rail-current .dt-rail-name { font-weight: 600; }
+.dt-rail-skipped .dt-rail-name { color: var(--ink-muted); text-decoration: line-through; }
+.dt-rail-state { color: var(--ink-muted); font-size: 13px; }
+
+/* CheckpointBar */
+.dt-check { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-4);
+  padding: var(--space-4) var(--space-6); background: var(--sunk); border-top: 1px solid var(--line-strong); }
+.dt-check-approve { border-top: 2px solid var(--action); }
+.dt-check-text { display: flex; flex-direction: column; min-width: 240px; flex: 1; }
+.dt-check-title { margin: 0; font-weight: 600; font-size: 16px; line-height: 24px; }
+.dt-check-hint { margin: 0; font-size: 14px; line-height: 20px; color: var(--ink-muted); }
+.dt-check-actions { display: flex; gap: var(--space-2); }

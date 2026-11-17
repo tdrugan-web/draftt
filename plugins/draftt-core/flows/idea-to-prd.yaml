@@ -1,0 +1,56 @@
+id: idea-to-prd
+spec: 1
+version: 1
+title: Idea to PRD
+summary: Turn a raw product idea into a framed problem, a pressure-tested direction, and a PRD ready for design and engineering.
+audience: [pm, trio]
+estimate: 15-25 min
+
+entry:
+  - id: idea
+    label: What's the idea?
+    type: long-text
+    required: true
+    help: A sentence or two is enough. Say who it's for if you know.
+  - id: notes
+    label: Anything you already have?
+    type: files
+    accept: [doc, transcript, screenshot]
+    help: Notes, a doc, interview transcripts, or screenshots. Optional.
+  - id: stage
+    label: Where is this idea today?
+    type: choice
+    default: just-an-idea
+    options:
+      - value: just-an-idea
+        label: Just an idea
+      - value: some-evidence
+        label: I've talked to some users
+      - value: validated
+        label: The problem is validated
+
+steps:
+  - id: frame
+    skill: problem-framer
+    title: Frame the problem
+    uses: [entry.idea, entry.notes, entry.stage, workspace.research-synthesis]
+    produces: problem-frame
+    checkpoint: approve
+
+  - id: critique
+    skill: strategic-critique
+    title: Pressure-test the framing
+    uses: [steps.frame]
+    produces: critique
+    checkpoint: review
+    optional: true
+    instructions: Focus on the riskiest assumption and whether the problem is worth solving.
+
+  - id: prd
+    skill: prd-writer
+    title: Write the PRD
+    uses: [steps.frame, steps.critique, entry.notes, workspace.persona]
+    produces: prd
+    checkpoint: approve
+
+outputs: [steps.frame, steps.prd]
